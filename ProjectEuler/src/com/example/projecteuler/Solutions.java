@@ -116,4 +116,42 @@ class Solutions {
 
         return (int) largeFactor;
     }
+
+    public int S0004() {
+        // Multiple 999 * 999 and start counting down.
+        // Check each result if it can be reversed.
+
+        int maxFactor = 999;
+        int product;
+        int palindrome = -1;
+
+        for (int i = maxFactor; i >= 100; i--){
+            for (int j = maxFactor; j >=100; j--){
+                product = i * j;
+                // Check if it is reversible.
+                String s1 = String.valueOf(product);
+                String s2 = reverseString(s1);
+
+                if (s1.equals(s2)){
+                    // Check if it is larger than previously found palindrome.
+                    if (product > palindrome) palindrome = product;
+                }
+            }
+        }
+        return palindrome;
+    }
+
+    private static String reverseString(String s) {
+
+        StringBuilder sb = new StringBuilder();
+        int length = s.length();
+
+        for (int i = 0; i < length; i++){
+            // Get character
+            char c = s.charAt(i);
+            sb.insert(0, c);
+        }
+
+        return sb.toString();
+    }
 }
