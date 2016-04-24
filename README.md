@@ -1,2 +1,2 @@
-# project_euler
+# project-euler
 My attempt to solve the problems on projecteuler.net
