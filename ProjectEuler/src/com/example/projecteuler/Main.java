@@ -9,13 +9,14 @@ public class Main {
 
     private static int n;
     private static Scanner sc = new Scanner(System.in);
-    private static int numSolved = 2;
+    private static int numSolved = 3;
+    private static boolean userActive = true;
 
     public static void main(String[] args) {
         System.out.println("Welcome to Pete's answers to Project Euler problems." +
                 "\nI've so far completed exercises 1 to " + numSolved + ", so only choose a problem in this range.");
 
-        while (true) requestSolution();
+        while (userActive) requestSolution();
 
     }
 
@@ -36,7 +37,7 @@ public class Main {
             }
         } else {
             if (sc.hasNext("exit")){
-                System.exit(0);
+                userActive = false;
             }
             else System.out.println("Not a valid integer.");
             sc.next();
@@ -56,13 +57,12 @@ public class Main {
         }
 
         try {
-            r = (int) method.invoke(s);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+            if (method != null) {
+                r = (int) method.invoke(s);
+            }
+        } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-
         return r;
     }
 }
