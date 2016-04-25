@@ -141,6 +141,57 @@ class Solutions {
         return palindrome;
     }
 
+    public int S0005() {
+
+        int n = 20;
+        int multiple = -1;
+        boolean multipleFound = false;
+        long fact = 1;
+
+        for (int i = 1; i <= n; i++){
+            fact *= i;
+        }
+
+        for (int i = 10; i <= fact; i++){
+            for (int j = 1; j <= n; j++){
+                if (i%j == 0){
+                    multipleFound = true;
+                } else {
+                    multipleFound = false;
+                    break;
+                }
+            }
+            if (multipleFound){
+                multiple = i;
+                break;
+            }
+        }
+
+        return multiple;
+
+    }
+
+    public int S0006() {
+
+        int n = 100;
+        long sumOfSquared = 0;
+        long squaredOfSum = 0;
+
+        // Sum of the squared.
+        for (int i = 1; i <= n; i++){
+            sumOfSquared += Math.pow(i, 2);
+        }
+        // Squared of sum.
+        for (int i = 1; i <= n; i++){
+            squaredOfSum += i;
+        }
+
+        squaredOfSum = (long) Math.pow(squaredOfSum, 2);
+
+        return (int) (squaredOfSum - sumOfSquared);
+
+    }
+
     private static String reverseString(String s) {
 
         StringBuilder sb = new StringBuilder();
