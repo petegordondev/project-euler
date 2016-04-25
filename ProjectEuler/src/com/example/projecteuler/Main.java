@@ -9,7 +9,7 @@ public class Main {
 
     private static int n;
     private static Scanner sc = new Scanner(System.in);
-    private static int numSolved = 4;
+    private static int numSolved = 7;
     private static boolean userActive = true;
 
     public static void main(String[] args) {
