@@ -1,6 +1,11 @@
 package com.example.projecteuler;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 class Solutions {
 
@@ -300,6 +305,40 @@ class Solutions {
         }
 
         return primes.get(target);
+    }
+
+    public int S0008() throws IOException {
+        int span = 13;
+        long target = -1; // Max possible value is 9^13 which is bigger than int max.
+
+        // Create ArrayList to store number. Could use HashMap.
+        List<Integer> l = new ArrayList<>();
+
+        // Read number from filw.
+        BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/ProjectEuler/data/D0007"));
+
+        String line;
+        while ((line = in.readLine()) != null) {
+            // Add each character in this line to ArrayList.
+            for (int i = 0; i < line.length(); i++){
+                l.add(Character.getNumericValue(line.charAt(i)));
+            }
+        }
+
+        // Start multiplying adjacent numbers within the ArrayList covered by the required span.
+        // Keep record of largest multiple.
+
+        long m = 0;
+        for (int i = 0; i < (l.size()-span); i++){
+
+            for (int j = 0; j < span; j++){
+                if (j==0) {
+                    m = l.get(i);
+                } else m *= l.get(i + j);
+            }
+            if (m > target) target = m;
+        }
+        return (int) target;
     }
 
     private static String reverseString(String s) {
