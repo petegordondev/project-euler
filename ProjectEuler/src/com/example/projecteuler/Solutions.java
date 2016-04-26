@@ -193,13 +193,16 @@ class Solutions {
     }
 
     public int S0007() {
+
+        /* Original solution
+
         int target = 10001;
         int primeCount = 0;
 
         // Going to use 'Sieve of Eratosthenes' to find primes.
         HashMap<Integer, Boolean> sieve = new HashMap<>();
 
-        // Seive has to be stepped, because we don't know where the target prime will be found.
+        // Sieve has to be stepped, because we don't know where the target prime will be found.
         int stepSize = 1000;
         int step = 0;
 
@@ -264,6 +267,39 @@ class Solutions {
         }
 
         return primes[target - 1];
+
+        */
+
+        int target = 10001;
+
+        // Each composite number can be divided by at least one prime number.
+
+        HashMap<Integer, Integer> primes = new HashMap<>();
+        // First prime is 2.
+        primes.put(1, 2);
+        int primeCount = 1;
+        int testNumber = 3;
+
+        boolean prime = true;
+
+        while (primeCount < target){
+            // Can next testNumber be divided by all primes that have been found?
+            for (int i = 1; i <= primes.size(); i++){
+                prime = true; // Treat each candidate as a prime until eliminated.
+                if (testNumber % primes.get(i) == 0){
+                    prime = false;
+                    break;
+                }
+            }
+
+            if (prime){
+                primeCount++;
+                primes.put(primeCount, testNumber);
+            }
+            testNumber++;
+        }
+
+        return primes.get(target);
     }
 
     private static String reverseString(String s) {
