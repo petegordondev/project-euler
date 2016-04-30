@@ -1,5 +1,7 @@
 package com.example.projecteuler;
 
+import com.example.projecteuler.solutions.*;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
@@ -46,6 +48,8 @@ public class Main {
 
     private static int loadSolution(int n) {
 
+
+
         Solutions s = new Solutions();
         Method method = null;
         int r = 0;
@@ -65,4 +69,17 @@ public class Main {
         }
         return r;
     }
+
+        ClassLoader classLoader = Main.class.getClassLoader();
+
+        try {
+            Class aClass = classLoader.loadClass("com.jenkov.MyClass");
+            System.out.println("aClass.getName() = " + aClass.getName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
