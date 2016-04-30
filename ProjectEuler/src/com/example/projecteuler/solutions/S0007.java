@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class S0007 implements Solution {
     @Override
     public int getAnswer() {
-        return improvedSolution();
+        return originalSolution();
     }
 
     private int improvedSolution() {

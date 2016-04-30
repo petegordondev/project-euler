@@ -34,8 +34,12 @@ public class Main {
                 System.out.println("No solution available.");
             } else {
                 System.out.println("You have requested answer for problem number " + n + ".");
+                long startTime = System.nanoTime();
                 int ans = loadSolution(n);
+                long endTime = System.nanoTime();
+                long duration = (endTime - startTime)/1000000;
                 System.out.println("Answer: " + ans);
+                System.out.println("Time for execution: " + duration + " ms");
             }
         } else {
             if (sc.hasNext("exit")){
