@@ -46,39 +46,31 @@ public class Main {
         }
     }
 
-    private static int loadSolution(int n) {
+    private static int loadSolution(int n){
 
-
-
-        Solutions s = new Solutions();
-        Method method = null;
-        int r = 0;
-
-        try {
-            method = s.getClass().getMethod("S000" + n);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            if (method != null) {
-                r = (int) method.invoke(s);
-            }
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return r;
-    }
-
+        int answer = -1;
         ClassLoader classLoader = Main.class.getClassLoader();
 
+        Class aClass = null;
         try {
-            Class aClass = classLoader.loadClass("com.jenkov.MyClass");
-            System.out.println("aClass.getName() = " + aClass.getName());
+            aClass = classLoader.loadClass("com.example.projecteuler.solutions.S000" + n);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
+        try {
+            Solution solution = null;
+            if (aClass != null) {
+                solution = (Solution) aClass.newInstance();
+            }
+            if (solution != null) {
+                answer = solution.getAnswer();
+            }
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return answer;
     }
 
 
