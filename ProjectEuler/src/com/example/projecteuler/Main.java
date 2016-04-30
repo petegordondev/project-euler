@@ -1,5 +1,7 @@
 package com.example.projecteuler;
 
+import com.example.projecteuler.solutions.*;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
@@ -32,8 +34,12 @@ public class Main {
                 System.out.println("No solution available.");
             } else {
                 System.out.println("You have requested answer for problem number " + n + ".");
+                long startTime = System.nanoTime();
                 int ans = loadSolution(n);
+                long endTime = System.nanoTime();
+                long duration = (endTime - startTime)/1000000;
                 System.out.println("Answer: " + ans);
+                System.out.println("Time for execution: " + duration + " ms");
             }
         } else {
             if (sc.hasNext("exit")){
@@ -44,25 +50,32 @@ public class Main {
         }
     }
 
-    private static int loadSolution(int n) {
+    private static int loadSolution(int n){
 
-        Solutions s = new Solutions();
-        Method method = null;
-        int r = 0;
+        int answer = -1;
+        ClassLoader classLoader = Main.class.getClassLoader();
 
+        Class aClass = null;
         try {
-            method = s.getClass().getMethod("S000" + n);
-        } catch (NoSuchMethodException e) {
+            aClass = classLoader.loadClass("com.example.projecteuler.solutions.S000" + n);
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         try {
-            if (method != null) {
-                r = (int) method.invoke(s);
+            Solution solution = null;
+            if (aClass != null) {
+                solution = (Solution) aClass.newInstance();
             }
-        } catch (IllegalAccessException | InvocationTargetException e) {
+            if (solution != null) {
+                answer = solution.getAnswer();
+            }
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        return r;
+
+        return answer;
     }
+
+
 }
