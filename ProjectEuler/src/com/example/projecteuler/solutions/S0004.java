@@ -5,8 +5,8 @@ import com.example.projecteuler.utils.StringHelper;
 
 public class S0004 implements Solution {
     @Override
-    public int getAnswer() {
-        return originalSolution();
+    public String getAnswer() {
+        return Integer.toString(originalSolution());
     }
 
     private int originalSolution() {

@@ -4,8 +4,8 @@ import com.example.projecteuler.Solution;
 
 public class S0005 implements Solution {
     @Override
-    public int getAnswer() {
-        return originalSolution();
+    public String getAnswer() {
+        return Integer.toString(originalSolution());
     }
 
     private int originalSolution() {

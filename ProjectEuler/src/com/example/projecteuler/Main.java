@@ -1,9 +1,6 @@
 package com.example.projecteuler;
 
-import com.example.projecteuler.solutions.*;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +8,8 @@ public class Main {
 
     private static int n;
     private static Scanner sc = new Scanner(System.in);
-    private static int numSolved = 9;
+
+    private static int numSolved = new File(System.getProperty("user.dir") + "/ProjectEuler/src/com/example/projecteuler/solutions").list().length;
     private static boolean userActive = true;
 
     public static void main(String[] args) {
@@ -35,7 +33,7 @@ public class Main {
             } else {
                 System.out.println("You have requested answer for problem number " + n + ".");
                 long startTime = System.nanoTime();
-                int ans = loadSolution(n);
+                String ans = loadSolution(n);
                 long endTime = System.nanoTime();
                 long duration = (endTime - startTime)/1000000;
                 System.out.println("Answer: " + ans);
@@ -50,14 +48,16 @@ public class Main {
         }
     }
 
-    private static int loadSolution(int n){
+    private static String loadSolution(int n){
 
-        int answer = -1;
+        String answer = "";
         ClassLoader classLoader = Main.class.getClassLoader();
+
+        String sClass = "S" + String.format("%04d", n);
 
         Class aClass = null;
         try {
-            aClass = classLoader.loadClass("com.example.projecteuler.solutions.S000" + n);
+            aClass = classLoader.loadClass("com.example.projecteuler.solutions." + sClass);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

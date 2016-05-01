@@ -15,8 +15,8 @@ public class S0009 implements Solution {
     private int target = 1000;
 
     @Override
-    public int getAnswer() {
-        return originalSolution();
+    public String getAnswer() {
+        return Integer.toString(originalSolution());
     }
 
     private int originalSolution() {

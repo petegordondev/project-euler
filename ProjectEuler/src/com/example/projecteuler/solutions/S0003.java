@@ -6,8 +6,8 @@ import java.util.HashMap;
 
 public class S0003 implements Solution {
     @Override
-    public int getAnswer() {
-        return improvedSolution();
+    public String getAnswer() {
+        return Integer.toString(improvedSolution());
     }
 
     private int improvedSolution() {

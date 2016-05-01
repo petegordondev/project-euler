@@ -12,8 +12,8 @@ import java.util.List;
 
 public class S0008 implements Solution {
     @Override
-    public int getAnswer() {
-        return originalSolution();
+    public String getAnswer() {
+        return Integer.toString(originalSolution());
     }
 
     private int originalSolution() {
@@ -26,7 +26,7 @@ public class S0008 implements Solution {
         // Read number from filw.
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/ProjectEuler/data/D0007"));
+            in = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/ProjectEuler/data/D0008"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

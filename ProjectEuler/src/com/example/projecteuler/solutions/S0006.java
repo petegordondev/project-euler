@@ -5,11 +5,11 @@ import com.example.projecteuler.Solution;
 
 public class S0006 implements Solution {
     @Override
-    public int getAnswer() {
-        return originalSolutions();
+    public String getAnswer() {
+        return Integer.toString(originalSolution());
     }
 
-    private int originalSolutions() {
+    private int originalSolution() {
         int n = 100;
         long sumOfSquared = 0;
         long squaredOfSum = 0;
