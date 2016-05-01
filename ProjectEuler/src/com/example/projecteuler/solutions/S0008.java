@@ -1,7 +1,6 @@
 package com.example.projecteuler.solutions;
 
 import com.example.projecteuler.Solution;
-import com.example.projecteuler.utils.GridHelper;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -24,7 +23,7 @@ public class S0008 implements Solution {
         // Create ArrayList to store number. Could use HashMap.
         List<Integer> l = new ArrayList<>();
 
-        // Read number from filw.
+        // Read number from file.
         BufferedReader in = null;
         try {
             in = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/ProjectEuler/data/D0008"));
