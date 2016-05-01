@@ -1,6 +1,7 @@
 package com.example.projecteuler.solutions;
 
 import com.example.projecteuler.Solution;
+import com.example.projecteuler.utils.GridHelper;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -13,10 +14,10 @@ import java.util.List;
 public class S0008 implements Solution {
     @Override
     public String getAnswer() {
-        return Integer.toString(originalSolution());
+        return Long.toString(originalSolution());
     }
 
-    private int originalSolution() {
+    private long originalSolution() {
         int span = 13;
         long target = -1; // Max possible value is 9^13 which is bigger than int max.
 
@@ -58,6 +59,6 @@ public class S0008 implements Solution {
             }
             if (m > target) target = m;
         }
-        return (int) target;
+        return target;
     }
 }
