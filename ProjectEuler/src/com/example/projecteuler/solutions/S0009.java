@@ -36,7 +36,6 @@ public class S0009 implements Solution {
                     a = (int) ( k * (Math.pow(m, 2) - Math.pow(n, 2)));
                     b = k * (2 * m * n);
                     c = (int) (k * (Math.pow(m, 2) + Math.pow(n, 2)));
-                    System.out.println("a: " + a + " b: " + b + " c: " + c + " Sum: " + sum());
                 }
                 if (test()) break;
                 reset();
