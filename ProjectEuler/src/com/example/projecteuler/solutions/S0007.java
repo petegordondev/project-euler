@@ -1,46 +1,22 @@
 package com.example.projecteuler.solutions;
 
 import com.example.projecteuler.Solution;
+import com.example.projecteuler.utils.PrimeHelper;
 
 import java.util.HashMap;
 
 public class S0007 implements Solution {
     @Override
     public String getAnswer() {
-        return Integer.toString(originalSolution());
+        return Integer.toString(improvedSolution());
     }
 
     private int improvedSolution() {
         int target = 10001;
 
-        // Each composite number can be divided by at least one prime number.
+        int[] primes = new PrimeHelper().findPrimes(target);
 
-        HashMap<Integer, Integer> primes = new HashMap<>();
-        // First prime is 2.
-        primes.put(1, 2);
-        int primeCount = 1;
-        int testNumber = 3;
-
-        boolean prime = true;
-
-        while (primeCount < target){
-            // Can next testNumber be divided by all primes that have been found?
-            for (int i = 1; i <= primes.size(); i++){
-                prime = true; // Treat each candidate as a prime until eliminated.
-                if (testNumber % primes.get(i) == 0){
-                    prime = false;
-                    break;
-                }
-            }
-
-            if (prime){
-                primeCount++;
-                primes.put(primeCount, testNumber);
-            }
-            testNumber++;
-        }
-
-        return primes.get(target);
+        return primes[target - 1];
     }
 
     private int originalSolution(){
