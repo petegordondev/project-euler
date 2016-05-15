@@ -12,7 +12,32 @@ public class S0015 implements Solution {
 
     @Override
     public String getAnswer() {
-        return Long.toString(originalSolution());
+        return Long.toString(improvedSolution());
+    }
+
+    private long improvedSolution() {
+
+        // Original solution was a brute force method. Here's a more mathematical approach.
+
+        int nodeCount = gridSize + 1;
+
+        // Create array and add like pascal triangles.
+        long[][] arr = new long[nodeCount][nodeCount];
+        // Populate first row.
+        for (int i = 0; i < nodeCount; i++) {
+            arr[i][0] = 1;
+        }
+        // Fill out other rows.
+        for (int j = 1; j < nodeCount; j++) {
+            arr[0][j] = 1;
+            for (int i = 1; i < nodeCount; i++){
+                arr[i][j] = arr[i -1][j] + arr[i][j -1];
+            }
+        }
+
+        pathCount = arr[nodeCount -1][nodeCount -1];
+
+        return pathCount;
     }
 
     private long originalSolution() {
