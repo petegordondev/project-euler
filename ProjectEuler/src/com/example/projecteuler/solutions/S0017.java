@@ -10,18 +10,19 @@ public class S0017 implements Solution {
         return Integer.toString(originalSolution());
     }
 
+    private int sum = 0;
+
     private int originalSolution() {
 
+        int target = 1000;
+        for (int i = 1; i <= target; i++){
+            String s = new StringHelper().numberAsWords(i);
+            s = s.replaceAll("\\s","");
+            s = s.replaceAll("-","");
+            sum += s.length();
+        }
 
-        System.out.println(new StringHelper().numberAsWords(1));
-        System.out.println(new StringHelper().numberAsWords(234));
-        System.out.println(new StringHelper().numberAsWords(70));
-        System.out.println(new StringHelper().numberAsWords(407));
-        System.out.println(new StringHelper().numberAsWords(517));
-        System.out.println(new StringHelper().numberAsWords(13));
-
-
-
-        return 0;
+        return sum;
     }
+
 }
