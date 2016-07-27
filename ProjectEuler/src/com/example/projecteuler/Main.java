@@ -22,7 +22,7 @@ public class Main {
 
     private static void requestSolution(){
 
-        System.out.print("Please enter a problem number for an answer (or type 'exit' to quit): ");
+        System.out.print("Please enter a problem number for an answer (or type 'q' to quit): ");
 
         if (sc.hasNextInt()) {
             n = sc.nextInt();
@@ -40,7 +40,7 @@ public class Main {
                 System.out.println("Time for execution: " + duration + " ms");
             }
         } else {
-            if (sc.hasNext("exit")){
+            if (sc.hasNext("q")){
                 userActive = false;
             }
             else System.out.println("Not a valid integer.");
