@@ -1,5 +1,8 @@
 package com.example.projecteuler.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringHelper {
     public StringHelper() {
     }
@@ -15,6 +18,31 @@ public class StringHelper {
         }
 
         return sb.toString();
+    }
+
+    public List<String> alphabetise(List<String> list){
+        List<String> aList = new ArrayList<>();
+
+        for (String item:
+             list) {
+            int n = 0;
+            int size = aList.size();
+
+            if (size > 0){
+
+
+                while (n < size) {
+                    if (item.compareTo(aList.get(n)) < 1){
+                        break;
+                    }
+                    n++;
+                }
+            }
+            aList.add(n, item);
+
+        }
+
+        return aList;
     }
 
     public String numberAsWords(int number){

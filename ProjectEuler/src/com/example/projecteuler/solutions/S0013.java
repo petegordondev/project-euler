@@ -20,7 +20,7 @@ public class S0013 implements Solution {
         DataFileHelper file = new DataFileHelper("D0013");
         List<BigInteger> list = new ArrayList<>();
 
-        for (String s: file.toStringArray()){
+        for (String s: file.toStringArrayLines()){
             list.add(new BigInteger(s));
         }
 

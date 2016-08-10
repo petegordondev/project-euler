@@ -12,8 +12,6 @@ public class S0018 implements Solution {
 
     // Possible clever method - eliminate links that are never to be used from the bottom up.
 
-    private int sum = 0;
-
     @Override
     public String getAnswer() {
         return Integer.toString(originalSolution());
@@ -21,11 +19,11 @@ public class S0018 implements Solution {
 
     private int originalSolution() {
 
-        List<String> data = new DataFileHelper("D0018").toStringArray();
+        List<String> data = new DataFileHelper("D0018").toStringArrayLines();
 
         // Parse strings into int arrays.
 
-        List<List> triangle = new ArrayList<>();
+        List<List<Integer>> triangle = new ArrayList<>();
 
         for (String triangleRow : data){
             List<Integer> row = new ArrayList<>();
@@ -55,12 +53,11 @@ public class S0018 implements Solution {
 
         for (int row = triangle.size()-1; row > 0; row--){
             List<Integer> upper = triangle.get(row-1);
-            List<Integer> lower = options;
             for (int n = 0; n < upper.size(); n++) {
 
                 int curr = upper.get(n);
-                int a = lower.get(n);
-                int b = lower.get(n+1);;
+                int a = options.get(n);
+                int b = options.get(n+1);
                 if (a > b){
                     options.set(n, curr + a);
                 } else {
@@ -73,8 +70,6 @@ public class S0018 implements Solution {
             //System.out.println();
         }
 
-        sum = options.get(0);
-
-        return sum;
+        return options.get(0);
     }
 }

@@ -16,8 +16,25 @@ public class DataFileHelper {
         this.fileName = file;
     }
 
-    public List<String> toStringArray(){
+    public List<String> toStringArrayLines(){
         return read();
+    }
+
+    public List<String> toStringArrayItems(String delimiter){
+
+        List<String> list = this.toStringArrayLines();
+        List<String> l = new ArrayList<>();
+
+        for (String line : list) {
+            String[] splitLine = line.split(delimiter);
+            for (String item :
+                    splitLine) {
+                item = item.replace("\"", "");
+                l.add(item);
+            }
+        }
+
+        return l;
     }
 
     private List<String> read(){

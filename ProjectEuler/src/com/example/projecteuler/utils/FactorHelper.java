@@ -20,6 +20,20 @@ public class FactorHelper {
         return generate().size();
     }
 
+    public int sum(){
+
+        int sum = 0;
+
+        List<Integer> l = this.generate();
+
+        for (Integer aL : l) {
+            sum += aL;
+        }
+
+        return sum;
+
+    }
+
     public void print(){
         for (Integer i : getList()){
             System.out.println(i);
