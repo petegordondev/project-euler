@@ -7,31 +7,52 @@ public class FactorHelper {
 
     private final int number;
 
+    private List<Integer> l = new ArrayList<>();
+
     public FactorHelper(int number) {
         this.number = number;
+        generate();
     }
 
-    @SuppressWarnings("WeakerAccess")
     public List<Integer> getList(){
-        return generate();
+        return l;
+    }
+
+    public List<Integer> getProper()
+    {
+        List<Integer> lProper = l;
+
+        if (lProper.size() > 0) lProper.remove(lProper.size()-1);
+
+        return lProper;
     }
 
     public int count(){
-        return generate().size();
+        return l.size();
+    }
+
+    public int sumProper(){
+
+        int sum = 0;
+
+        List<Integer> lProper = getProper();
+
+        for (Integer aL : lProper) {
+            sum += aL;
+        }
+
+        return sum;
     }
 
     public int sum(){
 
         int sum = 0;
 
-        List<Integer> l = this.generate();
-
         for (Integer aL : l) {
             sum += aL;
         }
 
         return sum;
-
     }
 
     public void print(){
@@ -40,8 +61,7 @@ public class FactorHelper {
         }
     }
 
-    private List<Integer> generate(){
-        List<Integer> l = new ArrayList<>();
+    private void generate(){
         // find all factors of n.
         // Find all factors lower than square root.
         int upper = (int) Math.sqrt(number);
@@ -52,6 +72,5 @@ public class FactorHelper {
         for (int i = l.size() - 1; i >= 0; i--){
             if (l.get(i) != upper) l.add(number / l.get(i));
         }
-        return l;
     }
 }
