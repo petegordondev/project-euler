@@ -5,6 +5,8 @@ import java.util.List;
 
 public class TriangularHelper {
 
+    // Gets the n first triangular numbers.
+
     private List<Integer> list = new ArrayList<>();
 
     public TriangularHelper() {

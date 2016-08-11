@@ -70,7 +70,8 @@ public class FactorHelper {
         }
         // Add factors above square root.
         for (int i = l.size() - 1; i >= 0; i--){
-            if (l.get(i) != upper) l.add(number / l.get(i));
+            int uFactor = number / l.get(i);
+            if (l.get(i) != uFactor) l.add(uFactor);
         }
     }
 }
