@@ -10,6 +10,16 @@ public class PrimeHelper {
     public PrimeHelper() {
     }
 
+    //TODO Proper prime checking method 'isPrime()' by using field arrays.
+    public boolean isPrime(int n){
+        if (n == 2) return true;
+        int[] primes = findPrimesUnder(n);
+        for (int i = 0; i <= primes.length/2; i++){
+            if (n%primes[i] == 0) return false;
+        }
+        return true;
+    }
+
     public int[] findPrimes(int n) // Returns an int array with the first n primes.
     {
         int primeCount = 0;
