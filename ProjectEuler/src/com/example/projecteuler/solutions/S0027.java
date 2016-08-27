@@ -20,14 +20,13 @@ public class S0027 implements Solution {
         // Get all primes under and equal to 1000; b has to be one of these.
         List<Integer> primesForB = PrimeHelper.getInstance().findPrimesUnder(target);
 
-        for (Integer prime : primesForB) {
+        for (Integer b : primesForB) {
             // b must be positive, otherwise result for n = 0 will be negative and therefore not a prime.
-            int b = prime;
 
-            // Lower limits of a are determined at n = 1 (result must be 2).
-            int aLow = -1 * (b + 1);
+            // Lower limits of a are determined at n = 1 where result must be positive.
+            int aLow = -1 * (b + 2);
 
-            for (int a = aLow; a < target; a++) {
+            for (int a = aLow; a < target; a+=2) {
 
                 // Reset and get first result.
                 int n = 0;
