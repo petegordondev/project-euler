@@ -1,6 +1,7 @@
 package com.example.projecteuler.solutions;
 
 import com.example.projecteuler.Solution;
+import com.example.projecteuler.utils.PrimeHelper;
 
 import java.util.HashMap;
 
@@ -10,10 +11,13 @@ public class S0003 implements Solution {
         return Integer.toString(improvedSolution());
     }
 
+    // Target = 600851475143.
+    long target = 600851475143L;
+    private boolean largestPrimeFound = false;
+
     private int improvedSolution() {
-        // Target = 600851475143.
-        long target = 600851475143L;
-        boolean largestPrimeFound = false;
+
+
 
         // We are looking for largest factor that is prime.
         // Cycle through largest potential factors of target, by dividing by smallest potential factors.

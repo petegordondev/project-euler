@@ -9,15 +9,17 @@ import java.util.Scanner;
 public class S9999 implements Solution {
     @Override
     public String getAnswer() {
-        return Integer.toString(originalSolution());
+        return Boolean.toString(originalSolution());
     }
 
-    private int originalSolution() {
+    private boolean originalSolution() {
 
         Scanner sc = new Scanner(System.in);
 
+        int i = 1000000;
+        long l = (long) i;
 
-        return 0;
+        return PrimeHelper.getInstance().isPrime(i);
     }
 
 }

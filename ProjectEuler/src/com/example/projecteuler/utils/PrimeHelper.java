@@ -69,17 +69,30 @@ public class PrimeHelper {
         return primesList.subList(0, index);
     }
 
-    public boolean isPrime(int n){
-        if (primesList.size() == 0) {
-            addPrimesUnder(n);
+    public boolean isPrime(int n)
+    {
+        return isPrime((long) n);
+    }
+
+    private boolean isPrime(long n){
+        if (primesList.size() != 0) {
+            if (primesList.get(primesList.size()-1) > n){
+                for (int i = 0; i <= primesList.size()-1; i++){
+                    if (n == primesList.get(i)) return true;
+                }
+                return false;
+            }
         }
-        else if (primesList.get(primesList.size()-1) < n){
-            addPrimesUnder(n);
+
+        boolean prime = true;
+        // A composite number will always have a factor less than or equal to its square root.
+        for (long f = (long) Math.sqrt((double) n); f >= 2; f--){
+            if (n%f == 0) { //Not a prime.
+                prime = false;
+                break;
+            }
         }
-        for (int i = 0; i <= primesList.size()-1; i++){
-            if (n == primesList.get(i)) return true;
-        }
-        return false;
+        return prime;
     }
 
     private void addPrimes(int n)
