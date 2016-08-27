@@ -4,6 +4,7 @@ import com.example.projecteuler.Solution;
 import com.example.projecteuler.utils.PrimeHelper;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class S9999 implements Solution {
     @Override
@@ -12,8 +13,11 @@ public class S9999 implements Solution {
     }
 
     private int originalSolution() {
-        List<Integer> primes = PrimeHelper.getInstance().findPrimesUnder(10000);
-        return primes.get(primes.size()-1);
+
+        Scanner sc = new Scanner(System.in);
+
+
+        return 0;
     }
 
 }

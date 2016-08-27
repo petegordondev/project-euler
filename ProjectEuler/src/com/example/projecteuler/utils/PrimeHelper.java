@@ -69,15 +69,18 @@ public class PrimeHelper {
         return primesList.subList(0, index);
     }
 
-//    //TODO Proper prime checking method 'isPrime()' by using field arrays.
-//    public boolean isPrime(int n){
-//        if (n == 2) return true;
-//        int[] primes = findPrimesUnder(n);
-//        for (int i = 0; i <= primes.length/2; i++){
-//            if (n%primes[i] == 0) return false;
-//        }
-//        return true;
-//    }
+    public boolean isPrime(int n){
+        if (primesList.size() == 0) {
+            addPrimesUnder(n);
+        }
+        else if (primesList.get(primesList.size()-1) < n){
+            addPrimesUnder(n);
+        }
+        for (int i = 0; i <= primesList.size()-1; i++){
+            if (n == primesList.get(i)) return true;
+        }
+        return false;
+    }
 
     private void addPrimes(int n)
     {
