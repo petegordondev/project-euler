@@ -4,6 +4,7 @@ import com.example.projecteuler.Solution;
 import com.example.projecteuler.utils.PrimeHelper;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class S0007 implements Solution {
     @Override
@@ -14,9 +15,9 @@ public class S0007 implements Solution {
     private int improvedSolution() {
         int target = 10001;
 
-        int[] primes = new PrimeHelper().findPrimes(target);
+        List<Integer> primes = PrimeHelper.getInstance().findPrimes(target);
 
-        return primes[target - 1];
+        return primes.get(target-1);
     }
 
     private int originalSolution(){

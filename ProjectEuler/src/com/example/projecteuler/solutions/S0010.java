@@ -4,6 +4,7 @@ import com.example.projecteuler.Solution;
 import com.example.projecteuler.utils.PrimeHelper;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class S0010 implements Solution {
     @Override
@@ -16,7 +17,7 @@ public class S0010 implements Solution {
         int target = 2000000;
         long sum = 0;
 
-        int[] primes = new PrimeHelper().findPrimesUnder(target);
+        List<Integer> primes = PrimeHelper.getInstance().findPrimesUnder(target);
 
         for (int prime : primes) {
             sum += prime;

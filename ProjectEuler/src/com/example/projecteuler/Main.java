@@ -28,7 +28,7 @@ public class Main {
             n = sc.nextInt();
             if (n <= 0) {
                 System.out.println("Not a positive integer.");
-            } else if (n > numSolved) {
+            } else if (n > numSolved && n != 9999) {
                 System.out.println("No solution available.");
             } else {
                 System.out.println("You have requested answer for problem number " + n + ".");
